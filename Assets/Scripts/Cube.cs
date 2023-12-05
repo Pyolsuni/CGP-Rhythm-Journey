@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    public float speed;
+    public float speed = 2.11666667f;
     public Vector3 Cube_Movement;
-    public AudioClip DestroySound;
+    public AudioClip CorrectSound;
+    public AudioClip MissSound;
+    public Transform Destruction;
+    public string TagName;
 
     void Update()
     {
@@ -15,7 +18,18 @@ public class Cube : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        AudioSource.PlayClipAtPoint(DestroySound, transform.position);
+        if (other.gameObject.CompareTag(TagName))
+        {
+            AudioSource.PlayClipAtPoint(CorrectSound, transform.position);
+        }
+        else
+        {
+            AudioSource.PlayClipAtPoint(MissSound, transform.position);
+        }
+        
+        
+        GameObject DestructionParticles = ((Transform)Instantiate(Destruction, this.transform.position, this.transform.rotation)).gameObject;
+        Destroy(DestructionParticles, 3.0f);
         GameObject.Destroy(gameObject);
     }
 }
