@@ -405,4 +405,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   crossSectionMaterial: {fileID: 2100000, guid: 365a9997fcf451a4bb17f01e76837cc9, type: 2}
-  cutForce: 2000
+  cutForce: 0

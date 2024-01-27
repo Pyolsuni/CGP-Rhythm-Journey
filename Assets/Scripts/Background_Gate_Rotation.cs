@@ -31,7 +31,7 @@ public class RotateTransforms : MonoBehaviour
         for (int i = 0; i < targetTransforms.Count; i++)
         {
             float angle = angularSpeed * Time.deltaTime + rotationOffsets[i];
-            targetTransforms[i].Rotate(0, 0, angle);
+            targetTransforms[i].Rotate(0, angle, 0);
         }
     }
 }

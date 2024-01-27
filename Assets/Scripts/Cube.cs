@@ -10,6 +10,8 @@ public class Cube : MonoBehaviour
     public AudioClip MissSound;
     public Transform Destruction;
     public string TagName;
+    public int score = 10;
+    public int combo = 1;
 
     void Update()
     {
@@ -21,10 +23,13 @@ public class Cube : MonoBehaviour
         if (other.gameObject.CompareTag(TagName))
         {
             AudioSource.PlayClipAtPoint(CorrectSound, transform.position);
+            Counter.Instance.Combo += combo;
+            Counter.Instance.Score += score;
         }
         else
         {
             AudioSource.PlayClipAtPoint(MissSound, transform.position);
+            Counter.Instance.Combo = 0;
         }
         
         
